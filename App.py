@@ -15,13 +15,13 @@ from langchain_core.prompts import ChatPromptTemplate
 neo4j_url = st.secrets["NEO4J_URI"]
 neo4j_user = st.secrets["NEO4J_USER"]
 neo4j_password = st.secrets["NEO4J_PASSWORD"]
-GROQ_API = st.secrets["GROQ_API_KEY"]
+groq_api_key = st.secrets["GROQ_API_KEY"]
 
 # Debug: Print the environment variables to ensure they're correctly loaded
 st.write("Neo4j URL:", neo4j_url)
 st.write("Neo4j User:", neo4j_user)
 st.write("Neo4j Password:", neo4j_password)
-st.write("GROQ API Key:", GROQ_API)
+st.write("GROQ API Key:", groq_api_key)
 
 
 try:
