@@ -20,7 +20,6 @@ try:
     # groq_api_key = st.secrets["GROQ_API_KEY"]
 
     GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
-    TAVILY_API_KEY = st.secrets["TAVILY_API_KEY"]
     NEO4J_URI = st.secrets["NEO4J_URI"]
     NEO4J_USERNAME = st.secrets["NEO4J_USERNAME"]
     NEO4J_PASSWORD = st.secrets["NEO4J_PASSWORD"]
