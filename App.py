@@ -13,16 +13,21 @@ from langchain_core.prompts import ChatPromptTemplate
 
 
 
-neo4j_url = os.getenv('NEO4J_URI')
-neo4j_user = os.getenv('NEO4J_USERNAME')
-neo4j_password = os.getenv('NEO4J_PASSWORD')
-GROQ_API = os.getenv('GROQ_API_KEY')
+# neo4j_url = os.getenv('NEO4J_URI')
+# neo4j_user = os.getenv('NEO4J_USERNAME')
+# neo4j_password = os.getenv('NEO4J_PASSWORD')
+# GROQ_API = os.getenv('GROQ_API_KEY')
 
-print(neo4j_url,neo4j_user ,neo4j_password,GROQ_API)
+url = os.environ["NEO4J_URI"] = "bolt://localhost:7687"
+username = os.environ["NEO4J_USER"] = "neo4j"
+password = os.environ["NEO4J_PASSWORD"] = "Pakistan@123456"
 
-# graph = Neo4jGraph(url=neo4j_url, username=neo4j_user, password=neo4j_password)
 
-graph = Neo4jGraph(url="bolt://localhost:7687", username="neo4j", password="Pakistan@123456")
+# print(neo4j_url,neo4j_user ,neo4j_password,GROQ_API)
+
+graph = Neo4jGraph(url=url, username=username, password=password)
+
+# graph = Neo4jGraph(url="bolt://localhost:7687", username="neo4j", password="Pakistan@123456")
 
 
 system_message = """
