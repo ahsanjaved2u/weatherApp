@@ -6,21 +6,21 @@ from langchain_groq import ChatGroq
 from langchain_community.graphs import Neo4jGraph
 from langchain_core.prompts import ChatPromptTemplate
 
-# Directly setting connection parameters
-# url = "bolt://localhost:7687"
-url = os.getenv('NEO4J_URI', 'bolt://<public-ip-or-domain>:7687')
-username = "neo4j"
-password = "Pakistan@123456"
-GROQ_API = "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"
+# Accessing environment variables
+neo4j_url = os.getenv('NEO4J_URI')
+neo4j_user = os.getenv('NEO4J_USER')
+neo4j_password = os.getenv('NEO4J_PASSWORD')
+groq_api_key = os.getenv('GROQ_API_KEY')
 
-# Debug print to ensure values are correct
-print("Neo4j URL:", url)
-print("Neo4j Username:", username)
-print("Neo4j Password:", password)
+# Debug: Print the environment variables to ensure they're correctly loaded
+st.write("Neo4j URL:", neo4j_url)
+st.write("Neo4j User:", neo4j_user)
+st.write("GROQ API Key:", groq_api_key)
+
 
 try:
     # Initialize the Neo4jGraph object with direct parameters
-    graph = Neo4jGraph(url=url, username=username, password=password)
+    graph = Neo4jGraph(url=neo4j_url, username=neo4j_user, password=neo4j_password)
     print("Neo4jGraph initialized successfully.")
 except Exception as e:
     st.write(f"An error occurred during Neo4jGraph initialization: {e}")
@@ -75,7 +75,7 @@ Graph Structure:
 
 prompt = ChatPromptTemplate.from_template(system_message)
 llm = ChatGroq(
-    api_key=GROQ_API,  # Replace with actual API key
+    api_key=groq_api_key,  # Replace with actual API key
     model="llama-3.1-70b-versatile",
     temperature=0,
     max_tokens=2000
