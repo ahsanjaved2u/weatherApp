@@ -5,12 +5,15 @@ from langchain.chains import GraphCypherQAChain
 from langchain_groq import ChatGroq
 from langchain_community.graphs import Neo4jGraph
 from langchain_core.prompts import ChatPromptTemplate
+from neo4j import GraphDatabase
 
 # Accessing environment variables
 # neo4j_url = os.getenv('NEO4J_URI')
 # neo4j_user = os.getenv('NEO4J_USER')
 # neo4j_password = os.getenv('NEO4J_PASSWORD')
 # groq_api_key = os.getenv('GROQ_API_KEY')
+
+
 
 try:
     # Initialize the Neo4jGraph object with direct parameters
@@ -28,6 +31,16 @@ try:
 except Exception as e:
     st.write(f"An error occurred during getting credentials: {e}")
     raise
+
+driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USERNAME, NEO4J_PASSWORD))
+
+# Test connection
+try:
+    with driver.session() as session:
+        result = session.run("RETURN 1")
+        print("Connection successful!")
+except Exception as e:
+    print(f"Connection failed: {e}")
 
 
 

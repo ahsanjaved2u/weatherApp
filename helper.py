@@ -7,3 +7,8 @@
         #     print(clean_output)
         # else:
         #      st.write("Could not extract Cypher query.")
+
+
+# http://139.135.34.112:7474/browser/
+
+# NEO4J_URI = "bolt://139.135.34.112:7687"
