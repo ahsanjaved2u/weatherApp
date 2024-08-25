@@ -20,9 +20,9 @@ GROQ_API = os.getenv('GROQ_API_KEY')
 
 print(neo4j_url,neo4j_user ,neo4j_password,GROQ_API)
 
-graph = Neo4jGraph(url=neo4j_url, username=neo4j_user, password=neo4j_password)
+# graph = Neo4jGraph(url=neo4j_url, username=neo4j_user, password=neo4j_password)
 
-# graph = Neo4jGraph(url="bolt://localhost:7687", username="neo4j", password="Pakistan@123456")
+graph = Neo4jGraph(url="bolt://localhost:7687", username="neo4j", password="Pakistan@123456")
 
 
 system_message = """
