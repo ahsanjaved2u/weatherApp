@@ -7,7 +7,8 @@ from langchain_community.graphs import Neo4jGraph
 from langchain_core.prompts import ChatPromptTemplate
 
 # Directly setting connection parameters
-url = "bolt://localhost:7687"
+# url = "bolt://localhost:7687"
+url = os.getenv('NEO4J_URI', 'bolt://<public-ip-or-domain>:7687')
 username = "neo4j"
 password = "Pakistan@123456"
 GROQ_API = "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"
