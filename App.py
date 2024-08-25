@@ -12,10 +12,19 @@ from langchain_core.prompts import ChatPromptTemplate
 # neo4j_password = os.getenv('NEO4J_PASSWORD')
 # groq_api_key = os.getenv('GROQ_API_KEY')
 
-neo4j_url = st.secrets["NEO4J_URI"]
-neo4j_user = st.secrets["NEO4J_USER"]
-neo4j_password = st.secrets["NEO4J_PASSWORD"]
-groq_api_key = st.secrets["GROQ_API_KEY"]
+try:
+    # Initialize the Neo4jGraph object with direct parameters
+    neo4j_url = st.secrets["NEO4J_URI"]
+    neo4j_user = st.secrets["NEO4J_USER"]
+    neo4j_password = st.secrets["NEO4J_PASSWORD"]
+    groq_api_key = st.secrets["GROQ_API_KEY"]
+
+    print("Neo4jGraph initialized successfully.")
+except Exception as e:
+    st.write(f"An error occurred during getting credentials: {e}")
+    raise
+
+
 
 # Debug: Print the environment variables to ensure they're correctly loaded
 st.write("Neo4j URL:", neo4j_url)
