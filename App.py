@@ -9,17 +9,18 @@ import io
 import re
 from contextlib import redirect_stdout
 import time  # Import the time module
-
-
-# title = st.text_input("Question") 
-# st.write( title)
-
-
-from langchain_community.graphs import Neo4jGraph
-
-graph = Neo4jGraph()
-
+import os
 from langchain_core.prompts import ChatPromptTemplate
+
+
+
+neo4j_url = os.getenv('NEO4J_URI')
+neo4j_user = os.getenv('NEO4J_USER')
+neo4j_password = os.getenv('NEO4J_PASSWORD')
+
+graph = Neo4jGraph(url=neo4j_url, user=neo4j_user, password=neo4j_password)
+
+
 system_message = """
 
 You are interacting with a Neo4j graph database containing weather data structured as follows:
