@@ -15,6 +15,7 @@ groq_api_key = os.getenv('GROQ_API_KEY')
 # Debug: Print the environment variables to ensure they're correctly loaded
 st.write("Neo4j URL:", neo4j_url)
 st.write("Neo4j User:", neo4j_user)
+st.write("Neo4j Password:", neo4j_password)
 st.write("GROQ API Key:", groq_api_key)
 
 
