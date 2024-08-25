@@ -15,8 +15,11 @@ from langchain_core.prompts import ChatPromptTemplate
 
 
 neo4j_url = os.getenv('NEO4J_URI')
-neo4j_user = os.getenv('NEO4J_USER')
+neo4j_user = os.getenv('NEO4J_USERNAME')
 neo4j_password = os.getenv('NEO4J_PASSWORD')
+GROQ_API = os.getenv('GROQ_API_KEY')
+
+print(neo4j_url,neo4j_user ,neo4j_password,GROQ_API)
 
 graph = Neo4jGraph(url=neo4j_url, username=neo4j_user, password=neo4j_password)
 
@@ -70,6 +73,7 @@ Graph Structure:
 
 prompt = ChatPromptTemplate.from_template(system_message)
 llm = ChatGroq(
+    api_key=GROQ_API,
     model = "llama-3.1-70b-versatile",
     temperature = 0,
     max_tokens = 2000
