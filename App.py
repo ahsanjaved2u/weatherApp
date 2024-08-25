@@ -14,10 +14,16 @@ from langchain_core.prompts import ChatPromptTemplate
 
 try:
     # Initialize the Neo4jGraph object with direct parameters
-    neo4j_url = st.secrets["NEO4J_URI"]
-    neo4j_user = st.secrets["NEO4J_USER"]
-    neo4j_password = st.secrets["NEO4J_PASSWORD"]
-    groq_api_key = st.secrets["GROQ_API_KEY"]
+    # neo4j_url = st.secrets["NEO4J_URI"]
+    # neo4j_user = st.secrets["NEO4J_USER"]
+    # neo4j_password = st.secrets["NEO4J_PASSWORD"]
+    # groq_api_key = st.secrets["GROQ_API_KEY"]
+
+    GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+    TAVILY_API_KEY = st.secrets["TAVILY_API_KEY"]
+    NEO4J_URI = st.secrets["NEO4J_URI"]
+    NEO4J_USERNAME = st.secrets["NEO4J_USERNAME"]
+    NEO4J_PASSWORD = st.secrets["NEO4J_PASSWORD"]
 
     print("Neo4jGraph initialized successfully.")
 except Exception as e:
@@ -27,15 +33,15 @@ except Exception as e:
 
 
 # Debug: Print the environment variables to ensure they're correctly loaded
-st.write("Neo4j URL:", neo4j_url)
-st.write("Neo4j User:", neo4j_user)
-st.write("Neo4j Password:", neo4j_password)
-st.write("GROQ API Key:", groq_api_key)
+st.write("Neo4j URL:", NEO4J_URI)
+st.write("Neo4j User:", NEO4J_USERNAME)
+st.write("Neo4j Password:", NEO4J_PASSWORD)
+st.write("GROQ API Key:", GROQ_API_KEY)
 
 
 try:
     # Initialize the Neo4jGraph object with direct parameters
-    graph = Neo4jGraph(url=neo4j_url, username=neo4j_user, password=neo4j_password)
+    graph = Neo4jGraph(url=NEO4J_URI, username=NEO4J_USERNAME, password=NEO4J_PASSWORD)
     print("Neo4jGraph initialized successfully.")
 except Exception as e:
     st.write(f"An error occurred during Neo4jGraph initialization: {e}")
@@ -90,7 +96,7 @@ Graph Structure:
 
 prompt = ChatPromptTemplate.from_template(system_message)
 llm = ChatGroq(
-    api_key=groq_api_key,  # Replace with actual API key
+    api_key=GROQ_API_KEY,  # Replace with actual API key
     model="llama-3.1-70b-versatile",
     temperature=0,
     max_tokens=2000
