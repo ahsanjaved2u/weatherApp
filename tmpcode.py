@@ -1,29 +1,34 @@
 import streamlit as st
-import os
-import time
+from langchain.chains import GraphCypherQAChain
+from langchain_groq import ChatGroq
 from langchain.chains import GraphCypherQAChain
 from langchain_groq import ChatGroq
 from langchain_community.graphs import Neo4jGraph
+import io
+import re
+from contextlib import redirect_stdout
+import time  # Import the time module
+import os
 from langchain_core.prompts import ChatPromptTemplate
 
-# Directly setting connection parameters
-url = "bolt://localhost:7687"
-username = "neo4j"
-password = "Pakistan@123456"
-GROQ_API = "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"
 
-# Debug print to ensure values are correct
-print("Neo4j URL:", url)
-print("Neo4j Username:", username)
-print("Neo4j Password:", password)
 
-try:
-    # Initialize the Neo4jGraph object with direct parameters
-    graph = Neo4jGraph(url=url, username=username, password=password)
-    print("Neo4jGraph initialized successfully.")
-except Exception as e:
-    st.write(f"An error occurred during Neo4jGraph initialization: {e}")
-    raise
+# neo4j_url = os.getenv('NEO4J_URI')
+# neo4j_user = os.getenv('NEO4J_USERNAME')
+# neo4j_password = os.getenv('NEO4J_PASSWORD')
+GROQ_API = os.getenv('GROQ_API_KEY')
+
+url = os.environ["NEO4J_URI"] = "bolt://localhost:7687"
+username = os.environ["NEO4J_USER"] = "neo4j"
+password = os.environ["NEO4J_PASSWORD"] = "Pakistan@123456"
+
+
+# print(neo4j_url,neo4j_user ,neo4j_password,GROQ_API)
+
+graph = Neo4jGraph(url=url, username=username, password=password)
+
+# graph = Neo4jGraph(url="bolt://localhost:7687", username="neo4j", password="Pakistan@123456")
+
 
 system_message = """
 
@@ -74,24 +79,27 @@ Graph Structure:
 
 prompt = ChatPromptTemplate.from_template(system_message)
 llm = ChatGroq(
-    api_key=GROQ_API,  # Replace with actual API key
-    model="llama-3.1-70b-versatile",
-    temperature=0,
-    max_tokens=2000
+    api_key=GROQ_API,
+    model = "llama-3.1-70b-versatile",
+    temperature = 0,
+    max_tokens = 2000
 )
 
-chain = GraphCypherQAChain.from_llm(graph=graph, llm=llm, verbose=False, cypher_prompt=prompt)
+chain = GraphCypherQAChain.from_llm(graph=graph, llm=llm, verbose=False,  cypher_prompt = prompt)
 
-# Streamlit input and processing
-question = st.text_input("Question")
+
+question = st.text_input("Question") 
 if st.button("Submit"):
     if question:
         try:
             start_time = time.time()
+
             response = chain.invoke({"query": question})
             st.write(response['result'])
-            end_time = time.time()
+            
+            end_time = time.time() 
             elapsed_time = end_time - start_time
             st.write(f"{elapsed_time:.2f}")
+
         except Exception as e:
             st.write(f"An error occurred: {e}")
