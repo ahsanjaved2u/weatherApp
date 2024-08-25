@@ -18,7 +18,7 @@ neo4j_url = os.getenv('NEO4J_URI')
 neo4j_user = os.getenv('NEO4J_USER')
 neo4j_password = os.getenv('NEO4J_PASSWORD')
 
-graph = Neo4jGraph(url=neo4j_url, user=neo4j_user, password=neo4j_password)
+graph = Neo4jGraph(url=neo4j_url, username=neo4j_user, password=neo4j_password)
 
 
 system_message = """
