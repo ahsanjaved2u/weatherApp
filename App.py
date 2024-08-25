@@ -7,10 +7,15 @@ from langchain_community.graphs import Neo4jGraph
 from langchain_core.prompts import ChatPromptTemplate
 
 # Accessing environment variables
-neo4j_url = os.getenv('NEO4J_URI')
-neo4j_user = os.getenv('NEO4J_USER')
-neo4j_password = os.getenv('NEO4J_PASSWORD')
-groq_api_key = os.getenv('GROQ_API_KEY')
+# neo4j_url = os.getenv('NEO4J_URI')
+# neo4j_user = os.getenv('NEO4J_USER')
+# neo4j_password = os.getenv('NEO4J_PASSWORD')
+# groq_api_key = os.getenv('GROQ_API_KEY')
+
+neo4j_url = st.secrets["NEO4J_URI"]
+neo4j_user = st.secrets["NEO4J_USER"]
+neo4j_password = st.secrets["NEO4J_PASSWORD"]
+GROQ_API = st.secrets["GROQ_API_KEY"]
 
 # Debug: Print the environment variables to ensure they're correctly loaded
 st.write("Neo4j URL:", neo4j_url)
