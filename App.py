@@ -21,7 +21,7 @@ GROQ_API = st.secrets["GROQ_API_KEY"]
 st.write("Neo4j URL:", neo4j_url)
 st.write("Neo4j User:", neo4j_user)
 st.write("Neo4j Password:", neo4j_password)
-st.write("GROQ API Key:", groq_api_key)
+st.write("GROQ API Key:", GROQ_API)
 
 
 try:
