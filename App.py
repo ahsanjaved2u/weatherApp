@@ -130,6 +130,6 @@ if st.button("Submit"):
             st.write(response['result'])
             end_time = time.time()
             elapsed_time = end_time - start_time
-            st.write(f"Time Elapsed: {elapsed_time:.2f}")
+            st.write(f"Time Elapsed By Model: {elapsed_time:.2f}")
         except Exception as e:
             st.write(f"An error occurred: {e}")
