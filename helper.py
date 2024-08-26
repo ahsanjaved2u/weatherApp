@@ -12,3 +12,10 @@
 # http://139.135.34.112:7474/browser/
 
 # NEO4J_URI = "bolt://139.135.34.112:7687"
+
+
+#  # Debug: Print the environment variables to ensure they're correctly loaded
+#     st.write("Neo4j URL:", NEO4J_URI)
+#     st.write("Neo4j User:", NEO4J_USERNAME)
+#     st.write("Neo4j Password:", NEO4J_PASSWORD)
+#     st.write("GROQ API Key:", GROQ_API_KEY)

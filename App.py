@@ -19,11 +19,7 @@ try:
     # NEO4J_PASSWORD = os.getenv('NEO4J_PASSWORD')
     # GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
-    # Debug: Print the environment variables to ensure they're correctly loaded
-    st.write("Neo4j URL:", NEO4J_URI)
-    st.write("Neo4j User:", NEO4J_USERNAME)
-    st.write("Neo4j Password:", NEO4J_PASSWORD)
-    st.write("GROQ API Key:", GROQ_API_KEY)
+   
 
 except Exception as e:
     st.write(f"An error occurred during getting credentials: {e}")
