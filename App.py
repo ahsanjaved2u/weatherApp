@@ -97,7 +97,8 @@ prompt = FewShotPromptTemplate(
         ensuring that any specific year mentioned in the query is directly translated into the Cypher query. For instance, 
         if the user asks for data from 1991 or in 1991, the Cypher query should explicitly reference the year 1991 in the `MATCH` statement.
         if the user asks for data from january or in january or any other month, the Cypher query should explicitly reference the month anuary or month 1 in the `MATCH` statement.
-        ALways give answer obtained from data and never give any suggestion or interpretation  
+        Always give answer obtained from data and never give any suggestion or interpretation.
+        If answer contains decimal numbers then give number upto two decimal position.   
 
         Below are a number of examples of questions and their corresponding Cypher queries.",
     """,
@@ -129,6 +130,6 @@ if st.button("Submit"):
             st.write(response['result'])
             end_time = time.time()
             elapsed_time = end_time - start_time
-            st.write(f"{elapsed_time:.2f}")
+            st.write(f"Time Elapsed: {elapsed_time:.2f}")
         except Exception as e:
             st.write(f"An error occurred: {e}")
