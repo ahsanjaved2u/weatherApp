@@ -28,7 +28,7 @@ except Exception as e:
 # INITIALIZING neo4j INSTANCE
 try:
     graph = Neo4jGraph(url =NEO4J_URI, username=NEO4J_USERNAME, password=NEO4J_PASSWORD)
-    st.write("NEO4j REMOTE INSTANCE INITIALISED SUCCESSFULLY")
+    st.write("NEO4j REMOTE INSTANCE INITIATED SUCCESSFULLY")
 except Exception as e:
     st.write(f"An error occurred during Neo4jGraph initialization: {e}")
     raise
